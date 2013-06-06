@@ -5,6 +5,7 @@ include_directories(include)
 
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
+set(LIBRARY_INSTALL_PATH /usr/lib)
 
 file(GLOB lib_source "src/*.cpp")
 LIST(SORT lib_source)
@@ -29,3 +30,4 @@ foreach(utest_src_file ${unit_tests_source})
     add_dependencies(check ${test_base})
 endforeach(utest_src_file)
 
+install(TARGETS ${PROJECT_NAME} DESTINATION ${LIBRARY_INSTALL_PATH})
