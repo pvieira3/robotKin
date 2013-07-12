@@ -1,8 +1,10 @@
 cmake_minimum_required(VERSION 2.6)
 project(robotKin)
+set(BUILD_FLAGS "-std=c++0x")
 
 include_directories(include)
 
+# Set path variables
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 set(LIBRARY_INSTALL_PATH /usr/lib)
@@ -15,6 +17,7 @@ file(GLOB unit_tests_source "test/*.cpp")
 LIST(SORT unit_tests_source)
 
 add_library(${PROJECT_NAME} SHARED ${lib_source})
+set_target_properties(${PROJECT_NAME} PROPERTIES COMPILE_FLAGS ${BUILD_FLAGS})
 
 enable_testing()
 
